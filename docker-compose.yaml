@@ -1,0 +1,11 @@
+version: '3.7'
+
+services:
+  calendar-app:
+    build: .
+    image: calendar-app
+    command: hypercorn calendar_app.api.main:app --reload --bind 0.0.0.0:8000
+    ports:
+      - 8000:8000
+    volumes:
+      - .:/code # mount the local folder to the container so that changes are applied without rebuilding the image

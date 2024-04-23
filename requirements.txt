@@ -1,0 +1,5 @@
+icalendar
+fastapi[all]
+pydantic
+hypercorn
+pytest
