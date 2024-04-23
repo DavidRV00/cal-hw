@@ -92,6 +92,8 @@ async def coordinate(agents: List[ClientAgentPair], limit_range: TimeRange) -> L
 
     for agent_events in agent_events_list:
         for event in agent_events:
+            if event.dtend <= limit_range.dtstart or event.dtstart >= limit_range.dtend:
+                continue
             bisect.insort(cutpoints, (event.dtstart, False))
             bisect.insort(cutpoints, (event.dtend, True))
 
